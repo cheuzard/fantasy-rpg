@@ -4,7 +4,7 @@ public class Wizard extends Entity{
 
 
     Wizard(int x, int y, Renderer renderer) {
-        super(x, y, "/home/cheuzard/eclipse-workspace/fantasy-rpg/src/art/wizard.sprite",renderer);
+        super(x, y, "art/wizard.sprite",renderer);
     }
 
 
@@ -13,9 +13,7 @@ public class Wizard extends Entity{
     }
 
     void fireball() throws InterruptedException {
-        Entity fireBall = new Entity(this.x + this.spriteWidth + 1, this.spriteHeight -3,"/home/cheuzard/eclipse-workspace/fantasy-rpg/src/art/fireBall" +
-                "" ,this.renderer);
-        fireBall.moveX(this.x + this.spriteWidth + 32, renderer);
+        Entity fireBall = new Entity(this.x + this.spriteWidth + 1, this.spriteHeight -3,"art/fireBall",this.renderer);
         fireBall.moveX(renderer.width, renderer);
     }
 }
