@@ -15,21 +15,23 @@ public class Entity extends Element {
 
     void moveX(int x, Renderer renderer) throws InterruptedException {
         if (Math.abs(x - this.x)/5 > 0){
-            int step = Math.min(Math.abs(x - this.x)/5,14);
+//            int step = Math.min(Math.abs(x - this.x)/8,8);
+            int sleepTime = 80;
+            int step = 4;
             int fpm = Math.abs(x - this.x)/step;
             if (x - this.x > 0){
                 for (int i = 0; i < fpm; i++) {
                     this.x = i == fpm - 1 ? x: (this.x += step) ;
                     renderer.loadElements(Element.myElements);
                     renderer.Render();
-                    Thread.sleep(150);
+                    Thread.sleep(sleepTime);
                 }
             }else if (x - this.x < 0){
                 for (int i = 0; i < fpm; i++) {
                     this.x = i == fpm - 1 ? x: (this.x -= step) ;
                     renderer.loadElements(Element.myElements);
                     renderer.Render();
-                    Thread.sleep(150);
+                    Thread.sleep(sleepTime);
                 }
             }
         }
