@@ -3,7 +3,7 @@ public class Main {
 //      hiding the cursor
 
         Renderer renderer = new Renderer(170,38);
-        Entity wizard = new Entity(3,1,renderer);
+        Wizard wizard = new Wizard(3,1,renderer);
 
         int i = -1;
         int num;
@@ -11,7 +11,7 @@ public class Main {
             renderer.loadElements(Element.myElements);
             renderer.options.setSituation("you just want to walk");
             renderer.options.setOption1("walk to the far left");
-            renderer.options.setOption2("walk to the far right");
+            renderer.options.setOption2("cast a fireball");
             renderer.options.setOption3("go to the next level");
             renderer.Render();
             num = renderer.options.proposeOptions();
@@ -20,11 +20,10 @@ public class Main {
                     wizard.moveX(2, renderer);
                     break;
                 case 2:
-                    wizard.moveX(150, renderer);
+                    wizard.fireball();
                     break;
                 case 3:
                     wizard.goToNext();
-                    i = 4;
                     break;
             }
         }

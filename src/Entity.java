@@ -1,9 +1,9 @@
 public class Entity extends Element {
-    String spritePath = "/home/cheuzard/IdeaProjects/Game/src/art/wizard.sprite";
+    String spritePath;
     Renderer renderer;
 
 
-    Entity(int x, int y, Renderer renderer) {
+    Entity(int x, int y, String spritePath,Renderer renderer) {
         super();
         this.x = x;
         this.y = y;
