@@ -1,2 +1,6 @@
 *.class
-out*
+/.idea/
+/out/
+.classpath
+.project
+Game.iml
