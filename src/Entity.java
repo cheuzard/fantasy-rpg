@@ -1,6 +1,7 @@
 public class Entity extends Element {
     String spritePath;
     Renderer renderer;
+    int hp;
 
 
     Entity(int x, int y, String spritePath,Renderer renderer) {
@@ -11,6 +12,21 @@ public class Entity extends Element {
         loadSprite(spritePath);
         myElements[numOfElements] = this;
         numOfElements++;
+    }
+
+    void takeDamage(int damage) throws InterruptedException {
+        hp -= damage;
+        int realX = this.x;
+        for (int i = 0; i < 4; i++) {
+            Thread.sleep(150);
+            this.x = renderer.width;
+            renderer.loadElements(Element.myElements);
+            renderer.Render();
+            Thread.sleep(150);
+            this.x = realX;
+            renderer.loadElements(Element.myElements);
+            renderer.Render();
+        }
     }
 
     void moveX(int x, Renderer renderer) throws InterruptedException {

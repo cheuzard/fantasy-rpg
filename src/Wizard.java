@@ -1,21 +1,22 @@
 public class Wizard extends Entity{
-    int hp = 70;
     int mana = 100;
 
 
     Wizard(int x, int y, Renderer renderer) {
-        super(x, y, "/home/cheuzard/eclipse-workspace/fantasy-rpg/src/art/wizard.sprite",renderer);
+        super(x, y, "art/wizard.sprite",renderer);
+        this.hp = 70;
     }
 
 
-    void takeDamage(int damage) {
-        hp -= damage;
-    }
 
-    void fireball() throws InterruptedException {
-        Entity fireBall = new Entity(this.x + this.spriteWidth + 1, this.spriteHeight -3,"/home/cheuzard/eclipse-workspace/fantasy-rpg/src/art/fireBall" +
-                "" ,this.renderer);
-        fireBall.moveX(this.x + this.spriteWidth + 32, renderer);
-        fireBall.moveX(renderer.width, renderer);
+
+    void fireball(Entity enemy) throws InterruptedException {
+        Entity fireBall = new Entity(this.x + this.spriteWidth + 1, this.spriteHeight -3,"art/fireBall",this.renderer);
+//        fireBall.moveX(this.x + this.spriteWidth + 32, renderer);
+        fireBall.moveX(enemy.x - fireBall.spriteWidth, renderer);
+        enemy.takeDamage(10);
+        fireBall.x = renderer.width;
+        renderer.loadElements(Element.myElements);
+        renderer.Render();
     }
 }

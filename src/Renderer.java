@@ -6,7 +6,7 @@ public class Renderer {
     int width;
     char[][] screen;
     Options options = new Options();
-
+    StringBuilder builder = new StringBuilder();
     Renderer( int width, int height) {
         this.width = width;
         this.height = height;
@@ -32,14 +32,15 @@ public class Renderer {
     }
 
     void Render(){
-        System.out.print("\033[?25l\033[2J\033[H");
+        System.out.println("\033[?25l");
+        builder.append("\033[2J\033[H");
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                System.out.print(screen[y][x]);
+                builder.append(screen[y][x]);
             }
-            System.out.println();
+            builder.append("\n");
         }
-
+        System.out.print(builder.toString());
         clearScreen();
 
     }
